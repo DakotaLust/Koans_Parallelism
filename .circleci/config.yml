@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: Splitting tests
-          command: circleci tests split < src |
+          command: circleci tests split < src ||
             bundle exec rspec $(cat src)
       # These two tests should run in parallel. Make it so!
       # - run:
