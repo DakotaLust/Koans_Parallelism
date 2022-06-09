@@ -9,7 +9,9 @@ jobs:
       - checkout
       - run:
           name: Splitting tests
-          command: circleci tests glob "src/*.sh" | circleci tests split > src/tests && bundle exec rspec $(cat src/tests)
+          command: |
+            circleci tests glob "src/*.sh" | circleci tests split > src/tests
+            bash $(cat src/tests)
       # These two tests should run in parallel. Make it so!
       # - run:
       #     name: Run Hello test
